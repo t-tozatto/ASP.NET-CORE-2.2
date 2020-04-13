@@ -1,5 +1,3 @@
-using System;
-
 namespace ProjetoZero.Models
 {
     public class ErrorViewModel

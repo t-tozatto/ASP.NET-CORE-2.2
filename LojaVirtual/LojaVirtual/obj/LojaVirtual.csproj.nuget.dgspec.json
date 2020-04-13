@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ASP. NET Core 2.2\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj": {}
+    "C:\\Users\\thais\\OneDrive\\Documents\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj": {}
   },
   "projects": {
-    "E:\\ASP. NET Core 2.2\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj": {
+    "C:\\Users\\thais\\OneDrive\\Documents\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ASP. NET Core 2.2\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj",
+        "projectUniqueName": "C:\\Users\\thais\\OneDrive\\Documents\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj",
         "projectName": "LojaVirtual",
-        "projectPath": "E:\\ASP. NET Core 2.2\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj",
+        "projectPath": "C:\\Users\\thais\\OneDrive\\Documents\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\LojaVirtual.csproj",
         "packagesPath": "C:\\Users\\thais\\.nuget\\packages\\",
-        "outputPath": "E:\\ASP. NET Core 2.2\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\obj\\",
+        "outputPath": "C:\\Users\\thais\\OneDrive\\Documents\\ASP.NET-CORE-2.2\\LojaVirtual\\LojaVirtual\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\thais\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -40,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
