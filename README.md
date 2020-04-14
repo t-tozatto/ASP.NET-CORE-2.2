@@ -1,2 +1,2 @@
-# ASP.NET CORE 2.2
- ASP.NET Core 2.2 - Criando uma Loja Virtual
+# Criando uma Loja Virtual
+ Utilizando o Asp.Net Core para criação de uma Loja Virtual
