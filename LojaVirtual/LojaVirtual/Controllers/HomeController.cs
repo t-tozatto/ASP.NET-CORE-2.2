@@ -1,7 +1,10 @@
-﻿using LojaVirtual.Database;
-using LojaVirtual.Libraries.Email;
+﻿using LojaVirtual.Libraries.Email;
+using LojaVirtual.Libraries.Login;
 using LojaVirtual.Models;
+using LojaVirtual.Repositories.Contracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,10 +14,15 @@ namespace LojaVirtual.Controllers
 {
     public class HomeController : Controller
     {
-        private LojaVirtualContext _banco;
-        public HomeController(LojaVirtualContext banco)
+        private IClienteRepository _repositoryCliente;
+        private INewsletterRepository _repositoryNewsletter;
+        private LoginCliente _loginCliente;
+
+        public HomeController(IClienteRepository repositoryCliente, INewsletterRepository newsletterRepository, LoginCliente loginCliente)
         {
-            _banco = banco;
+            _repositoryCliente = repositoryCliente;
+            _repositoryNewsletter = newsletterRepository;
+            _loginCliente = loginCliente;
         }
 
         [HttpGet]
@@ -28,8 +36,7 @@ namespace LojaVirtual.Controllers
         {
             if (ModelState.IsValid)
             {
-                _banco.NewsletterEmail.Add(newsletter);
-                _banco.SaveChanges();
+                _repositoryNewsletter.Cadastrar(newsletter);
 
                 TempData["MSG_S"] = "E-mail cadastrado! Agora você irá receber promoções especiais no seu e-mail! Fique atento as novidades!";
 
@@ -85,13 +92,64 @@ namespace LojaVirtual.Controllers
             return View("Contato");
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Login([FromForm]Cliente cliente)
+        {
+            Cliente clienteLogin =_repositoryCliente.Login(cliente.Email, cliente.Senha);
+            if (clienteLogin != null && clienteLogin.Id > 0)
+            {
+                _loginCliente.Login(clienteLogin);
+
+                return new RedirectResult(Url.Action(nameof(Painel)));
+            }
+            else
+            {
+                ViewData["MSG_E"] = "Usuário não encontrado, verifique e-mail e senha!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Painel()
+        {
+            Cliente clienteLogin =_loginCliente.GetCliente();
+            if(clienteLogin != null && clienteLogin.Id > 0)
+            {
+                return new ContentResult()
+                {
+                    Content = string.Concat("Acesso Concedido: ", clienteLogin.Id)
+                };
+            }
+
+            return new ContentResult()
+            {
+                Content = "Acesso Negado!"
+            };
+        }
+
+        [HttpGet]
         public IActionResult CadastroCliente()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CadastroCliente([FromForm]Cliente cliente)
+        {
+            if(ModelState.IsValid)
+            {
+                _repositoryCliente.Cadastrar(cliente);
+
+                TempData["MSG_S"] = "Cadastro realizado com sucesso!";
+
+                return RedirectToAction(nameof(CadastroCliente));
+            }
             return View();
         }
 

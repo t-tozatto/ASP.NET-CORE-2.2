@@ -12,9 +12,42 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 2 "C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\Views\_ViewImports.cshtml"
+using LojaVirtual.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"360e38d38594e2249d4c462640377debe858d557", @"/Views/Home/Contato.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dbe432dc0fde64388285e47294a860c879dd4e8c", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Contato : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("role", new global::Microsoft.AspNetCore.Html.HtmlString("form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("method", "post", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("action", new global::Microsoft.AspNetCore.Html.HtmlString("/Home/ContatoAcao"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        #line hidden
+        #pragma warning disable 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext __tagHelperExecutionContext;
+        #pragma warning restore 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner __tagHelperRunner = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner();
+        #pragma warning disable 0169
+        private string __tagHelperStringValueBuffer;
+        #pragma warning restore 0169
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __backed__tagHelperScopeManager = null;
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __tagHelperScopeManager
+        {
+            get
+            {
+                if (__backed__tagHelperScopeManager == null)
+                {
+                    __backed__tagHelperScopeManager = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager(StartTagHelperWritingScope, EndTagHelperWritingScope);
+                }
+                return __backed__tagHelperScopeManager;
+            }
+        }
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper;
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
@@ -109,8 +142,9 @@ namespace AspNetCore
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral(@"
-                            <form role=""form"" method=""post"" action=""/Home/ContatoAcao"">
+            WriteLiteral("\r\n                            ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "360e38d38594e2249d4c462640377debe858d5577462", async() => {
+                WriteLiteral(@"
                                 <div class=""form-group"">
                                     <label for=""nome"">Nome</label>
                                     <div class=""input-group"">
@@ -118,11 +152,11 @@ namespace AspNetCore
                                             <span class=""input-group-text""><i class=""fa fa-user""></i></span>
                                         </div>
                                         <input type=""text"" id=""nome"" class=""form-control"" name=""nome""");
-            BeginWriteAttribute("placeholder", " placeholder=\"", 2489, "\"", 2503, 0);
-            EndWriteAttribute();
-            BeginWriteAttribute("required", "\r\n                                               required=\"", 2504, "\"", 2563, 0);
-            EndWriteAttribute();
-            BeginWriteAttribute("value", " value=\"", 2564, "\"", 2620, 1);
+                BeginWriteAttribute("placeholder", " placeholder=\"", 2489, "\"", 2503, 0);
+                EndWriteAttribute();
+                BeginWriteAttribute("required", "\r\n                                               required=\"", 2504, "\"", 2563, 0);
+                EndWriteAttribute();
+                BeginWriteAttribute("value", " value=\"", 2564, "\"", 2620, 1);
 #nullable restore
 #line 60 "C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\Views\Home\Contato.cshtml"
 WriteAttributeValue("", 2572, contato != null ? contato.Nome : string.Empty, 2572, 48, false);
@@ -130,8 +164,8 @@ WriteAttributeValue("", 2572, contato != null ? contato.Nome : string.Empty, 257
 #line default
 #line hidden
 #nullable disable
-            EndWriteAttribute();
-            WriteLiteral(@">
+                EndWriteAttribute();
+                WriteLiteral(@">
                                     </div>
                                 </div>
 
@@ -142,9 +176,9 @@ WriteAttributeValue("", 2572, contato != null ? contato.Nome : string.Empty, 257
                                             <span class=""input-group-text""><i class=""fa fa-at""></i></span>
                                         </div>
                                         <input type=""text"" id=""email"" class=""form-control"" name=""email""");
-            BeginWriteAttribute("placeholder", " placeholder=\"", 3236, "\"", 3250, 0);
-            EndWriteAttribute();
-            BeginWriteAttribute("value", " value=\"", 3251, "\"", 3308, 1);
+                BeginWriteAttribute("placeholder", " placeholder=\"", 3236, "\"", 3250, 0);
+                EndWriteAttribute();
+                BeginWriteAttribute("value", " value=\"", 3251, "\"", 3308, 1);
 #nullable restore
 #line 70 "C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\Views\Home\Contato.cshtml"
 WriteAttributeValue("", 3259, contato != null ? contato.Email : string.Empty, 3259, 49, false);
@@ -152,8 +186,8 @@ WriteAttributeValue("", 3259, contato != null ? contato.Email : string.Empty, 32
 #line default
 #line hidden
 #nullable disable
-            EndWriteAttribute();
-            WriteLiteral(@">
+                EndWriteAttribute();
+                WriteLiteral(@">
                                     </div>
                                 </div>
 
@@ -170,25 +204,32 @@ WriteAttributeValue("", 3259, contato != null ? contato.Email : string.Empty, 32
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral(@"</textarea>
+                WriteLiteral(@"</textarea>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <button class=""subscribe btn btn-primary btn-block"" type=""submit""> Enviar </button>
-                            </form>
-                        </div>
-                    </article>
-
-                </div>
-
-            </aside>
-        </div>
-    </div>
-</main>
-
-");
+                            ");
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper.Method = (string)__tagHelperAttribute_1.Value;
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral("\r\n                        </div>\r\n                    </article>\r\n\r\n                </div>\r\n\r\n            </aside>\r\n        </div>\r\n    </div>\r\n</main>\r\n\r\n");
         }
         #pragma warning restore 1998
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
