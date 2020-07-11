@@ -1,5 +1,5 @@
 ﻿using LojaVirtual.Models;
-using System.Collections.Generic;
+using X.PagedList;
 
 namespace LojaVirtual.Repositories.Contracts
 {
@@ -12,6 +12,6 @@ namespace LojaVirtual.Repositories.Contracts
         void Excluir(int Id);
 
         Colaborador ObterColaborador(int Id);
-        List<Colaborador> ObterTodosColaboradores();
+        IPagedList<Colaborador> ObterTodosColaboradores(int? pagina);
     }
 }

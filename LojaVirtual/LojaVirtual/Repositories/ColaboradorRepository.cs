@@ -1,17 +1,21 @@
 ﻿using LojaVirtual.Database;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Contracts;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
+using X.PagedList;
 
 namespace LojaVirtual.Repositories
 {
     public class ColaboradorRepository : IColaboradorRepository
     {
         private LojaVirtualContext _banco;
-        public ColaboradorRepository(LojaVirtualContext banco)
+        IConfiguration _configuration;
+
+        public ColaboradorRepository(LojaVirtualContext banco, IConfiguration configuration)
         {
             _banco = banco;
+            _configuration = configuration;
         }
 
         public Colaborador Login(string Email, string Senha)
@@ -42,9 +46,9 @@ namespace LojaVirtual.Repositories
             return _banco.Colaboradores.Find(Id);
         }
 
-        public List<Colaborador> ObterTodosColaboradores()
+        public IPagedList<Colaborador> ObterTodosColaboradores(int? pagina)
         {
-            return _banco.Colaboradores.ToList();
+            return _banco.Colaboradores.Where(x => !x.Tipo.Equals("G")).OrderBy(x => x.Nome).ToPagedList(pagina ?? 0, _configuration.GetValue<int>("RegistrosPorPagina"));
         }
     }
 }

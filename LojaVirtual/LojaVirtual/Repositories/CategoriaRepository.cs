@@ -2,6 +2,7 @@
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using X.PagedList;
@@ -11,10 +12,12 @@ namespace LojaVirtual.Repositories
     public class CategoriaRepository : ICategoriaRepository
     {
         LojaVirtualContext _banco;
-        const int _registroPorPagina = 10;
-        public CategoriaRepository(LojaVirtualContext banco)
+        IConfiguration _configuration;
+
+        public CategoriaRepository(LojaVirtualContext banco, IConfiguration configuration)
         {
             _banco = banco;
+            _configuration = configuration;
         }
 
         public void Atualizar(Categoria categoria)
@@ -42,7 +45,7 @@ namespace LojaVirtual.Repositories
 
         public IPagedList<Categoria> ObterTodasCategorias(int? pagina)
         {
-            return _banco.Categorias.Include(x => x.CategoriaPai).OrderBy(x => x.Nome).ToPagedList(pagina ?? 1, _registroPorPagina);
+            return _banco.Categorias.Include(x => x.CategoriaPai).OrderBy(x => x.Nome).ToPagedList(pagina ?? 1, _configuration.GetValue<int>("RegistrosPorPagina"));
         }
 
         public IEnumerable<Categoria> ObterTodasCategorias()
