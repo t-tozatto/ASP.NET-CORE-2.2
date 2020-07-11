@@ -15,12 +15,7 @@ namespace LojaVirtual.Libraries.Filtro
             Colaborador colaboradorLogin = _loginColaborador.GetColaborador();
 
             if (colaboradorLogin == null || colaboradorLogin.Id == 0)
-            {
-                context.Result = new ContentResult()
-                {
-                    Content = "Acesso Negado!"
-                };
-            }
+                context.Result = new RedirectToActionResult(nameof(Login), "Home", null);
         }
     }
 }

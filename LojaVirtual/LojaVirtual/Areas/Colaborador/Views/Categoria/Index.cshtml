@@ -1,0 +1,47 @@
+﻿@model X.PagedList.IPagedList<Categoria>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Categoria</h3>
+
+@if (TempData["MSG_S"] != null)
+{
+    <p class="alert alert-success">@TempData["MSG_S"]</p>
+}
+
+<a asp-action="Cadastrar" class="btn btn-primary">Cadastrar</a>
+
+@if (Model.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(x => Model.First().Nome)</th>
+                    <th scope="col">@Html.DisplayNameFor(x => Model.First().CategoriaPaiId)</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Categoria categoria in Model)
+                {
+                    <tr>
+                        <th scope="row"> @categoria.Nome</th>
+                        <td>@Html.DisplayFor(x => categoria.CategoriaPai.Nome)</td>
+                        <td>
+                            <a asp-action="Atualizar" class="btn btn-secondary" asp-route-id="@categoria.Id">Atualizar</a>
+                            <a asp-action="Excluir" class="btn btn-danger" asp-route-id="@categoria.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina }))
+}
+else
+{
+    <span>Nenhum registro encontrado!</span>
+}
