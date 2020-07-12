@@ -48,7 +48,7 @@ namespace LojaVirtual.Repositories
 
         public IPagedList<Colaborador> ObterTodosColaboradores(int? pagina)
         {
-            return _banco.Colaboradores.Where(x => !x.Tipo.Equals("G")).OrderBy(x => x.Nome).ToPagedList(pagina ?? 0, _configuration.GetValue<int>("RegistrosPorPagina"));
+            return _banco.Colaboradores.Where(x => !x.Tipo.Equals("G")).OrderBy(x => x.Nome).ToPagedList(pagina ?? 1, _configuration.GetValue<int>("RegistrosPorPagina"));
         }
     }
 }

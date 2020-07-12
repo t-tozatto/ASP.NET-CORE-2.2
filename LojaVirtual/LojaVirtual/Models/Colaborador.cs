@@ -30,12 +30,13 @@ namespace LojaVirtual.Models
         [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         [MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
         [MaxLength(256, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E003")]
+        [Display(Name = "Confirme a Senha")]
+        [Compare(nameof(Senha), ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E005")]
         public string ConfirmacaoSenha { get; set; }
 
         /// <summary>
         /// C = Comum | G = Gerente
         /// </summary>
-        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         public string Tipo { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LojaVirtual.Libraries.Filtro;
+using LojaVirtual.Libraries.Lang;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +37,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             if(ModelState.IsValid)
             {
                 _categoriaRepository.Cadastrar(categoria);
-                TempData["MSG_S"] = "Registro salvo com sucesso!";
+                TempData["MSG_S"] = Mensagem.MSG_S001;
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Categorias = _categoriaRepository.ObterTodasCategorias().Select(x => new SelectListItem(x.Nome, x.Id.ToString()));
@@ -56,7 +57,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             if(ModelState.IsValid)
             {
                 _categoriaRepository.Atualizar(categoria);
-                TempData["MSG_S"] = "Registro atualizado com sucesso!";
+                TempData["MSG_S"] = Mensagem.MSG_S002;
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Categorias = _categoriaRepository.ObterTodasCategorias().Where(x => x.Id != categoria.Id).Select(x => new SelectListItem(x.Nome, x.Id.ToString()));
@@ -67,7 +68,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
         public IActionResult Excluir(int id)
         {
             _categoriaRepository.Excluir(id);
-            TempData["MSG_S"] = "Registro excluído com sucesso!";
+            TempData["MSG_S"] = Mensagem.MSG_S003;
             return RedirectToAction(nameof(Index));
         }
     }
