@@ -9,9 +9,11 @@ namespace LojaVirtual.Repositories.Contracts
 
         void Cadastrar(Colaborador colaborador);
         void Atualizar(Colaborador colaborador);
+        void AtualizarSenha(Colaborador colaborador);
         void Excluir(int Id);
 
         Colaborador ObterColaborador(int Id);
+        int ObterColaboradorPorEmaill(string email, int id);
         IPagedList<Colaborador> ObterTodosColaboradores(int? pagina);
     }
 }
