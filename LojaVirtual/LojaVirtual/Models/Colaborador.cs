@@ -1,6 +1,5 @@
 ﻿using LojaVirtual.Libraries.Lang;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LojaVirtual.Models
 {
@@ -21,18 +20,18 @@ namespace LojaVirtual.Models
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
-        [MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
-        [MaxLength(256, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E003")]
+        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        //[MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
+        //[MaxLength(256, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E003")]
         public string Senha { get; set; }
 
-        [NotMapped]
-        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
-        [MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
-        [MaxLength(256, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E003")]
-        [Display(Name = "Confirme a Senha")]
-        [Compare(nameof(Senha), ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E005")]
-        public string ConfirmacaoSenha { get; set; }
+        //[NotMapped]
+        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        //[MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
+        //[MaxLength(256, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E003")]
+        //[Display(Name = "Confirme a Senha")]
+        //[Compare(nameof(Senha), ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E005")]
+        //public string ConfirmacaoSenha { get; set; }
 
         /// <summary>
         /// C = Comum | G = Gerente
