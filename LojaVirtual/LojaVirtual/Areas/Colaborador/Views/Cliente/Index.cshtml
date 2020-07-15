@@ -1,0 +1,70 @@
+﻿@model X.PagedList.IPagedList<Cliente>;
+@{
+    ViewData["Title"] = "Index";
+    var pesquisa = Context.Request.Query["pesquisa"];
+}
+
+<h3>Cliente</h3>
+<br />
+<form method="get">
+    <div class="form-group">
+        <div class="input-group mb-sm-auto">
+            <input type="text"  value="@pesquisa" name="pesquisa" id="pesquisa" class="form-control" placeholder="Digite o nome ou e-mail do cliente" aria-describedby="btnPesquisa">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="btnPesquisa">
+                    <svg type="submit" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@if (Model.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(x => Model.First().Nome)</th>
+                    <th scope="col">@Html.DisplayNameFor(x => Model.First().Email)</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Cliente cliente in Model)
+                {
+                    <tr>
+                        <th scope="row"> @cliente.Nome</th>
+                        <td>@Html.DisplayFor(x => cliente.Email)</td>
+                        <td>
+                            @if (cliente.Situacao.Equals(SituacaoConstant.Ativo))
+                            {
+                                <a asp-action="AtivarDesativar" class="btn btn-danger" asp-route-id="@cliente.Id">Desativar</a>
+                            }
+                            else
+                            {
+                                <a asp-action="AtivarDesativar" class="btn btn-success" asp-route-id="@cliente.Id">Ativar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina = pagina, pesquisa = pesquisa }))
+
+    @if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+}
+else
+{
+    <br />
+    <br />
+    <span>Nenhum registro encontrado!</span>
+}
