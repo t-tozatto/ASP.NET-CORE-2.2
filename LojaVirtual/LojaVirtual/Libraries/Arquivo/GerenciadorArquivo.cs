@@ -20,7 +20,7 @@ namespace LojaVirtual.Libraries.Arquivo
 
         public static bool ExcluirImagemProduto(string caminho)
         {
-            string Caminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", caminho.TrimStart('/'));
+            string Caminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", caminho.Trim('/')).Replace("/", "\\");
             
             if(File.Exists(Caminho))
             {
@@ -28,6 +28,18 @@ namespace LojaVirtual.Libraries.Arquivo
                 return true;
             }
             return false;
+        }
+
+        public static void ExcluirImagensProduto(int idProduto)
+        {
+            string Caminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads\\produtos\\", idProduto.ToString());
+
+            DirectoryInfo di = new DirectoryInfo(Caminho);
+
+            foreach (FileInfo file in di.GetFiles())
+                file.Delete();
+
+            Directory.Delete(Caminho);
         }
 
         public static List<Imagem> MoverImagemProduto(string[] caminhos, string produtoId)

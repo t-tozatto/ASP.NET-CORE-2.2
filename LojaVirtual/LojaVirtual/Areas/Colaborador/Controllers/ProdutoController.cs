@@ -48,7 +48,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
                 TempData["MSG_S"] = Mensagem.MSG_S001;
                 return RedirectToAction(nameof(Index));
             }
-            produto.Imagens = new List<string>(Request.Form["imagem"]).Where(x => x.Trim().Length > 0).Select(x => new Imagem() { Caminho = x}).ToList();
+            produto.Imagens = new List<string>(Request.Form["imagem"]).Where(x => x.Trim().Length > 0).Select(x => new Imagem() { Caminho = x }).ToList();
             ViewBag.Categorias = _categoriaRepository.ObterTodasCategorias().Select(x => new SelectListItem(x.Nome, x.Id.ToString()));
             return View(produto);
         }
@@ -75,6 +75,31 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             produto.Imagens = new List<string>(Request.Form["imagem"]).Where(x => x.Trim().Length > 0).Select(x => new Imagem() { Caminho = x }).ToList();
             ViewBag.Categorias = _categoriaRepository.ObterTodasCategorias().Select(x => new SelectListItem(x.Nome, x.Id.ToString()));
             return View(produto);
+        }
+
+        [HttpGet]
+        [ValidateHttpReferer]
+        public IActionResult Excluir(int id)
+        {
+            GerenciadorArquivo.ExcluirImagensProduto(id);
+            _imagemRepository.ExcluirImagensProduto(id);
+            _produtoRepository.Excluir(id);
+            TempData["MSG_S"] = Mensagem.MSG_S003;
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult Voltar()
+        {
+            string[] caminhosImagens = Request.Form["imagem"].ToArray();
+
+            for (int i = 0; i < caminhosImagens.Length; i++)
+            {
+                if (caminhosImagens[i].Contains("temp"))
+                    GerenciadorArquivo.ExcluirImagemProduto(caminhosImagens[i]);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

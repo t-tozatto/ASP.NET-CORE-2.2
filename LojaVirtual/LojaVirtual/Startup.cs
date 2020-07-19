@@ -61,7 +61,11 @@ namespace LojaVirtual
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMvc(option =>
+            {
+                option.EnableEndpointRouting = false;
+                option.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "O campo deve ser preenchido.");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
