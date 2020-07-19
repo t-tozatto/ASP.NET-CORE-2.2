@@ -1,0 +1,49 @@
+﻿@model List<Categoria>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/"> LojaVirtual</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString().Equals("Home") && ViewContext.RouteData.Values["action"].ToString().Equals("Index") ? "active" : string.Empty)">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            @if (Model != null && Model.Count > 0)
+            {
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["controller"].ToString().Equals("Home") && ViewContext.RouteData.Values["action"].ToString().Equals("Categoria") ? "active" : string.Empty)" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-list-ul"></i> Categorias
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        @{
+                            List<Categoria> listaCategoriaPai = Model.Where(x => x.CategoriaPaiId == null).ToList();
+                            ViewData["listaTodasCategorias"] = Model.ToList();
+
+                            foreach (Categoria categoria in listaCategoriaPai)
+                            {
+                                @await Html.PartialAsync("~/Views/Shared/Components/Menu/_Submenu.cshtml", new ViewDataDictionary(ViewData) { { "categoriaPai", categoria } });
+                            }
+                        }
+                    </ul>
+                </div>
+            }
+
+            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString().Equals("Home") && ViewContext.RouteData.Values["action"].ToString().Equals("Contato") ? "active" : string.Empty)">
+                <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="palavra" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
+            <a class="nav-link" href="/Home/Login"><i class="fas fa-user-alt"></i> Login</a>
+            <a class="nav-link" href="/Home/CarrinhoCompras"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+        </form>
+    </div>
+</nav>
