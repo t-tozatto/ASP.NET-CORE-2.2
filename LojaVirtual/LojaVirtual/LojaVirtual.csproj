@@ -35,6 +35,11 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\produtos\" />
+    <Folder Include="wwwroot\uploads\temp\" />
+  </ItemGroup>
+
 
 
 </Project>

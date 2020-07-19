@@ -194,3 +194,6 @@ C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\D
 C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Colaborador\Cadastrar.cshtml.g.cs
 C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Colaborador\Atualizar.cshtml.g.cs
 C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Cliente\Index.cshtml.g.cs
+C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Produto\Index.cshtml.g.cs
+C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Produto\Cadastrar.cshtml.g.cs
+C:\Users\thais\OneDrive\Documents\ASP.NET-CORE-2.2\LojaVirtual\LojaVirtual\obj\Debug\netcoreapp3.1\Razor\Areas\Colaborador\Views\Produto\Atualizar.cshtml.g.cs
